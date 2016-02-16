@@ -28,6 +28,8 @@
 #include <cyme/cyme.h>
 #include <cyme/math/math.h>
 
+typedef double v4double __attribute((vector_size(32)));
+
 extern "C" {
     float cyme_fexp(float a){return cyme::sexp(a);}
     float cyme_fexp2(float a){return cyme::sexp2(a);}
@@ -52,4 +54,6 @@ extern "C" {
     double cyme_sin(double a){return cyme::ssin(a);}
     double cyme_cos(double a){return cyme::scos(a);}
     double cyme_tan(double a){return cyme::stan(a);}
+
+    v4double cyme_v4exp(v4double a){return cyme::v4exp(a);}
 }

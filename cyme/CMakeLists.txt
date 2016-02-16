@@ -64,7 +64,8 @@ if(CYME_VMX_FOUND)
 endif(CYME_VMX_FOUND)
 
 if(CYME_SSE_FOUND OR CYME_AVX_FOUND)
-    set_target_properties(cyme PROPERTIES COMPILE_FLAGS "-D__CYME_SIMD_VALUE__=sse -D__CYME_UNROLL_VALUE__=1 -msse4.1 ${CYME_FMA_FLAGS}")
+#   set_target_properties(cyme PROPERTIES COMPILE_FLAGS "-D__CYME_SIMD_VALUE__=sse -D__CYME_UNROLL_VALUE__=1 -msse4.1 ${CYME_FMA_FLAGS}")
+    set_target_properties(cyme PROPERTIES COMPILE_FLAGS "-mavx ${CYME_FMA_FLAGS}")
 endif(CYME_SSE_FOUND OR CYME_AVX_FOUND)
 
 if(CYME_QPX_FOUND)

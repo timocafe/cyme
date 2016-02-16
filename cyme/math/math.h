@@ -53,6 +53,10 @@
 
 //this file is used for c++ only not install for the library
 namespace cyme {
+
+    typedef double v4double __attribute((vector_size(32)));
+
+
 /** Construction of the serial exponential, 32-bit precision.
 
    The single function load/unload a serial number only.
@@ -208,6 +212,15 @@ inline double sexp(double a){
     v.single(&res);
     return res;
 }
+
+/** Construction of the vectlrial exponential, 64-bit precision.
+
+     The single function load/unload a serial number only.
+*/
+    inline v4double v4exp(v4double a){
+        cyme::vec_simd<double,cyme::avx,1> tmp(a);
+        return exp(tmp).xmm;
+    }
 
 /** Construction of the serial 2^x, 64-bit precision.
 
